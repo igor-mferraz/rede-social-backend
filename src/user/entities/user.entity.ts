@@ -29,4 +29,7 @@ export class User {
     @Column({name: 'link'})
     link?:string
 
+    @Column({name: 'teste'})
+    teste?:string
+
 }
