@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "src/user/entities/user.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({name: 'tweet'})
@@ -12,6 +13,6 @@ export class Tweet {
     @Column({name: 'image'})
     image:string;
 
-    @Column({name: 'idUser', nullable: false})
-    idUser: number;   
+    @ManyToOne(() => User, user => user.tweets)
+    user: User;
 }

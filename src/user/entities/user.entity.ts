@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Tweet } from "src/tweet/entities/tweet.entity";
+import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'user'})
 export class User {
@@ -17,19 +18,19 @@ export class User {
     @Column({name: 'name', nullable: false})
     name:string;
     
-    @Column({name: 'avatar'})
+    @Column({name: 'avatar', nullable: true })
     avatar:string;
     
-    @Column({name: 'cover'})
+    @Column({name: 'cover', nullable: true })
     cover:string;
     
-    @Column({name: 'bio'})
+    @Column({name: 'bio', nullable: true })
     bio?:string;
     
-    @Column({name: 'link'})
+    @Column({name: 'link', nullable: true })
     link?:string
 
-    @Column({name: 'teste'})
-    teste?:string
+    @OneToMany(() => Tweet, tweet => tweet.user)
+    tweets: Tweet[];
 
 }
